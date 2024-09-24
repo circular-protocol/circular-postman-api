@@ -1,0 +1,1361 @@
+{
+	"info": {
+		"_postman_id": "c50ead93-feec-4bcd-b61f-79873666066a",
+		"name": "Circular Protocol API Calls",
+		"description": "The **Circular Blockchain** API suite provides a robust and efficient interface for interacting with the Circular Protocol, a decentralized and highly scalable blockchain network. These APIs enable developers to integrate, query, and execute operations on the Circular Protocol blockchain, supporting a wide range of decentralized applications (dApps), financial transactions, and smart contracts.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18541586"
+	},
+	"item": [
+		{
+			"name": "Check Wallet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Blockchain\": \"\",\n    \"Address\": \"\",\n    \"Version\": \"{{version}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nag.circularlabs.io/NAG.php?cep=Circular_CheckWallet_",
+					"protocol": "https",
+					"host": [
+						"nag",
+						"circularlabs",
+						"io"
+					],
+					"path": [
+						"NAG.php"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "Circular_CheckWallet_"
+						}
+					]
+				},
+				"description": "Check if a wallet exists on a specific blockchain"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Wallet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Blockchain\": \"\",\n    \"Address\": \"\",\n    \"Version\": \"{{version}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nag.circularlabs.io/NAG.php?cep=Circular_GetWallet_",
+					"protocol": "https",
+					"host": [
+						"nag",
+						"circularlabs",
+						"io"
+					],
+					"path": [
+						"NAG.php"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "Circular_GetWallet_"
+						}
+					]
+				},
+				"description": "Get a wallet from a blockchain"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Latest Transactions",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Blockchain\": \"\",\n    \"Address\": \"\",\n    \"Version\": \"{{version}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nag.circularlabs.io/NAG.php?cep=Circular_GetLatestTransactions_",
+					"protocol": "https",
+					"host": [
+						"nag",
+						"circularlabs",
+						"io"
+					],
+					"path": [
+						"NAG.php"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "Circular_GetLatestTransactions_"
+						}
+					]
+				},
+				"description": "Get the latest transaction for a wallet on a blockchain"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Wallet Balance",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Blockchain\": \"\",\n    \"Address\": \"\",\n    \"Asset\": \"\",\n    \"Version\": \"{{version}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nag.circularlabs.io/NAG.php?cep=Circular_GetWalletBalance_",
+					"protocol": "https",
+					"host": [
+						"nag",
+						"circularlabs",
+						"io"
+					],
+					"path": [
+						"NAG.php"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "Circular_GetWalletBalance_"
+						}
+					]
+				},
+				"description": "Get the balance of a wallet on a blockchain"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Wallet Nonce",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Blockchain\": \"\",\n    \"Address\": \"\",\n    \"Version\": \"{{version}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nag.circularlabs.io/NAG.php?cep=Circular_GetWalletNonce_",
+					"protocol": "https",
+					"host": [
+						"nag",
+						"circularlabs",
+						"io"
+					],
+					"path": [
+						"NAG.php"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "Circular_GetWalletNonce_"
+						}
+					]
+				},
+				"description": "Get the nonce of a wallet on a blockchain"
+			},
+			"response": []
+		},
+		{
+			"name": "Test Contract",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function padNumber(number) {",
+							"    return number < 10 ? '0' + number : number;",
+							"}",
+							"",
+							"function getFormattedTimestamp() {",
+							"    let date = new Date(); ",
+							"    let year = date.getUTCFullYear(); ",
+							"    let month = padNumber(date.getUTCMonth() + 1);  ",
+							"    let day = padNumber(date.getUTCDate()); ",
+							"    let hours = padNumber(date.getUTCHours()); ",
+							"    let minutes = padNumber(date.getUTCMinutes()); ",
+							"    let seconds = padNumber(date.getUTCSeconds()); ",
+							"",
+							"    return `${year}:${month}:${day}-${hours}:${minutes}:${seconds}`;",
+							"}",
+							"",
+							"let timestamp = getFormattedTimestamp();",
+							"pm.globals.set('timestampFormatted', timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Blockchain\": \"\",\n    \"From\": \"\",\n    \"Timestamp\": \"{{timestampFormatted}}\",\n    \"Project\": \"\",\n    \"Version\": \"{{version}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nag.circularlabs.io/NAG.php?cep=Circular_TestContract_",
+					"protocol": "https",
+					"host": [
+						"nag",
+						"circularlabs",
+						"io"
+					],
+					"path": [
+						"NAG.php"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "Circular_TestContract_"
+						}
+					]
+				},
+				"description": "Test a contract on a blockchain"
+			},
+			"response": []
+		},
+		{
+			"name": "Call Contract",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function padNumber(number) {",
+							"    return number < 10 ? '0' + number : number;",
+							"}",
+							"",
+							"function getFormattedTimestamp() {",
+							"    let date = new Date(); ",
+							"    let year = date.getUTCFullYear(); ",
+							"    let month = padNumber(date.getUTCMonth() + 1);  ",
+							"    let day = padNumber(date.getUTCDate()); ",
+							"    let hours = padNumber(date.getUTCHours()); ",
+							"    let minutes = padNumber(date.getUTCMinutes()); ",
+							"    let seconds = padNumber(date.getUTCSeconds()); ",
+							"",
+							"    return `${year}:${month}:${day}-${hours}:${minutes}:${seconds}`;",
+							"}",
+							"",
+							"let timestamp = getFormattedTimestamp();",
+							"pm.globals.set('timestampFormatted', timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Blockchain\": \"\",\n    \"From\": \"\",\n    \"Timestamp\": \"{{timestampFormatted}}\",\n    \"Address\": \"\",\n    \"Request\": \"\",\n    \"Version\": \"{{version}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nag.circularlabs.io/NAG.php?cep=Circular_CallContract_",
+					"protocol": "https",
+					"host": [
+						"nag",
+						"circularlabs",
+						"io"
+					],
+					"path": [
+						"NAG.php"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "Circular_CallContract_"
+						}
+					]
+				},
+				"description": "This request calls a smart contract function parsed in HEX format.  \nThe \"From\" field must be the owner's address."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Domain",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function padNumber(number) {",
+							"    return number < 10 ? '0' + number : number;",
+							"}",
+							"",
+							"function getFormattedTimestamp() {",
+							"    let date = new Date(); ",
+							"    let year = date.getUTCFullYear(); ",
+							"    let month = padNumber(date.getUTCMonth() + 1);  ",
+							"    let day = padNumber(date.getUTCDate()); ",
+							"    let hours = padNumber(date.getUTCHours()); ",
+							"    let minutes = padNumber(date.getUTCMinutes()); ",
+							"    let seconds = padNumber(date.getUTCSeconds()); ",
+							"",
+							"    return `${year}:${month}:${day}-${hours}:${minutes}:${seconds}`;",
+							"}",
+							"",
+							"let timestamp = getFormattedTimestamp();",
+							"pm.globals.set('timestampFormatted', timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Blockchain\": \"\",\n    \"Domain\": \"\",\n    \"Version\": \"{{version}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nag.circularlabs.io/NAG.php?cep=Circular_ResolveDomain_",
+					"protocol": "https",
+					"host": [
+						"nag",
+						"circularlabs",
+						"io"
+					],
+					"path": [
+						"NAG.php"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "Circular_ResolveDomain_"
+						}
+					]
+				},
+				"description": "Get the domain from a blockchain"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Asset List",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function padNumber(number) {",
+							"    return number < 10 ? '0' + number : number;",
+							"}",
+							"",
+							"function getFormattedTimestamp() {",
+							"    let date = new Date(); ",
+							"    let year = date.getUTCFullYear(); ",
+							"    let month = padNumber(date.getUTCMonth() + 1);  ",
+							"    let day = padNumber(date.getUTCDate()); ",
+							"    let hours = padNumber(date.getUTCHours()); ",
+							"    let minutes = padNumber(date.getUTCMinutes()); ",
+							"    let seconds = padNumber(date.getUTCSeconds()); ",
+							"",
+							"    return `${year}:${month}:${day}-${hours}:${minutes}:${seconds}`;",
+							"}",
+							"",
+							"let timestamp = getFormattedTimestamp();",
+							"pm.globals.set('timestampFormatted', timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Blockchain\": \"\",\n    \"Version\": \"{{version}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nag.circularlabs.io/NAG.php?cep=Circular_GetAssetList_",
+					"protocol": "https",
+					"host": [
+						"nag",
+						"circularlabs",
+						"io"
+					],
+					"path": [
+						"NAG.php"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "Circular_GetAssetList_"
+						}
+					]
+				},
+				"description": "Get the list of assets from a blockchain"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Asset",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function padNumber(number) {",
+							"    return number < 10 ? '0' + number : number;",
+							"}",
+							"",
+							"function getFormattedTimestamp() {",
+							"    let date = new Date(); ",
+							"    let year = date.getUTCFullYear(); ",
+							"    let month = padNumber(date.getUTCMonth() + 1);  ",
+							"    let day = padNumber(date.getUTCDate()); ",
+							"    let hours = padNumber(date.getUTCHours()); ",
+							"    let minutes = padNumber(date.getUTCMinutes()); ",
+							"    let seconds = padNumber(date.getUTCSeconds()); ",
+							"",
+							"    return `${year}:${month}:${day}-${hours}:${minutes}:${seconds}`;",
+							"}",
+							"",
+							"let timestamp = getFormattedTimestamp();",
+							"pm.globals.set('timestampFormatted', timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Blockchain\": \"\",\n    \"AssetName\": \"\",\n    \"Version\": \"{{version}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nag.circularlabs.io/NAG.php?cep=Circular_GetAsset_",
+					"protocol": "https",
+					"host": [
+						"nag",
+						"circularlabs",
+						"io"
+					],
+					"path": [
+						"NAG.php"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "Circular_GetAsset_"
+						}
+					]
+				},
+				"description": "Get an asset from a blockchain"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Asset Supply",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function padNumber(number) {",
+							"    return number < 10 ? '0' + number : number;",
+							"}",
+							"",
+							"function getFormattedTimestamp() {",
+							"    let date = new Date(); ",
+							"    let year = date.getUTCFullYear(); ",
+							"    let month = padNumber(date.getUTCMonth() + 1);  ",
+							"    let day = padNumber(date.getUTCDate()); ",
+							"    let hours = padNumber(date.getUTCHours()); ",
+							"    let minutes = padNumber(date.getUTCMinutes()); ",
+							"    let seconds = padNumber(date.getUTCSeconds()); ",
+							"",
+							"    return `${year}:${month}:${day}-${hours}:${minutes}:${seconds}`;",
+							"}",
+							"",
+							"let timestamp = getFormattedTimestamp();",
+							"pm.globals.set('timestampFormatted', timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Blockchain\": \"\",\n    \"AssetName\": \"\",\n    \"Version\": \"{{version}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nag.circularlabs.io/NAG.php?cep=Circular_GetAssetSupply_",
+					"protocol": "https",
+					"host": [
+						"nag",
+						"circularlabs",
+						"io"
+					],
+					"path": [
+						"NAG.php"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "Circular_GetAssetSupply_"
+						}
+					]
+				},
+				"description": "Get the supply of an asset from a blockchain"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Voucher",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function padNumber(number) {",
+							"    return number < 10 ? '0' + number : number;",
+							"}",
+							"",
+							"function getFormattedTimestamp() {",
+							"    let date = new Date(); ",
+							"    let year = date.getUTCFullYear(); ",
+							"    let month = padNumber(date.getUTCMonth() + 1);  ",
+							"    let day = padNumber(date.getUTCDate()); ",
+							"    let hours = padNumber(date.getUTCHours()); ",
+							"    let minutes = padNumber(date.getUTCMinutes()); ",
+							"    let seconds = padNumber(date.getUTCSeconds()); ",
+							"",
+							"    return `${year}:${month}:${day}-${hours}:${minutes}:${seconds}`;",
+							"}",
+							"",
+							"let timestamp = getFormattedTimestamp();",
+							"pm.globals.set('timestampFormatted', timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Blockchain\": \"\",\n    \"Code\": \"\",\n    \"Version\": \"{{version}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nag.circularlabs.io/NAG.php?cep=Circular_GetVoucher_",
+					"protocol": "https",
+					"host": [
+						"nag",
+						"circularlabs",
+						"io"
+					],
+					"path": [
+						"NAG.php"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "Circular_GetVoucher_"
+						}
+					]
+				},
+				"description": "Get a voucher from a blockchain"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Block Range",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function padNumber(number) {",
+							"    return number < 10 ? '0' + number : number;",
+							"}",
+							"",
+							"function getFormattedTimestamp() {",
+							"    let date = new Date(); ",
+							"    let year = date.getUTCFullYear(); ",
+							"    let month = padNumber(date.getUTCMonth() + 1);  ",
+							"    let day = padNumber(date.getUTCDate()); ",
+							"    let hours = padNumber(date.getUTCHours()); ",
+							"    let minutes = padNumber(date.getUTCMinutes()); ",
+							"    let seconds = padNumber(date.getUTCSeconds()); ",
+							"",
+							"    return `${year}:${month}:${day}-${hours}:${minutes}:${seconds}`;",
+							"}",
+							"",
+							"let timestamp = getFormattedTimestamp();",
+							"pm.globals.set('timestampFormatted', timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Blockchain\": \"\",\n    \"Start\": \"\",\n    \"End\": \"\",\n    \"Version\": \"{{version}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nag.circularlabs.io/NAG.php?cep=Circular_GetBlockRange_",
+					"protocol": "https",
+					"host": [
+						"nag",
+						"circularlabs",
+						"io"
+					],
+					"path": [
+						"NAG.php"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "Circular_GetBlockRange_"
+						}
+					]
+				},
+				"description": "Retrieve all blocks in a specified range"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Block",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function padNumber(number) {",
+							"    return number < 10 ? '0' + number : number;",
+							"}",
+							"",
+							"function getFormattedTimestamp() {",
+							"    let date = new Date(); ",
+							"    let year = date.getUTCFullYear(); ",
+							"    let month = padNumber(date.getUTCMonth() + 1);  ",
+							"    let day = padNumber(date.getUTCDate()); ",
+							"    let hours = padNumber(date.getUTCHours()); ",
+							"    let minutes = padNumber(date.getUTCMinutes()); ",
+							"    let seconds = padNumber(date.getUTCSeconds()); ",
+							"",
+							"    return `${year}:${month}:${day}-${hours}:${minutes}:${seconds}`;",
+							"}",
+							"",
+							"let timestamp = getFormattedTimestamp();",
+							"pm.globals.set('timestampFormatted', timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Blockchain\": \"\",\n    \"BlockNumber\": \"\",\n    \"Version\": \"{{version}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nag.circularlabs.io/NAG.php?cep=Circular_GetBlock_",
+					"protocol": "https",
+					"host": [
+						"nag",
+						"circularlabs",
+						"io"
+					],
+					"path": [
+						"NAG.php"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "Circular_GetBlock_"
+						}
+					]
+				},
+				"description": "Get a block from a blockchain"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Block Count",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function padNumber(number) {",
+							"    return number < 10 ? '0' + number : number;",
+							"}",
+							"",
+							"function getFormattedTimestamp() {",
+							"    let date = new Date(); ",
+							"    let year = date.getUTCFullYear(); ",
+							"    let month = padNumber(date.getUTCMonth() + 1);  ",
+							"    let day = padNumber(date.getUTCDate()); ",
+							"    let hours = padNumber(date.getUTCHours()); ",
+							"    let minutes = padNumber(date.getUTCMinutes()); ",
+							"    let seconds = padNumber(date.getUTCSeconds()); ",
+							"",
+							"    return `${year}:${month}:${day}-${hours}:${minutes}:${seconds}`;",
+							"}",
+							"",
+							"let timestamp = getFormattedTimestamp();",
+							"pm.globals.set('timestampFormatted', timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Blockchain\": \"\",\n    \"Version\": \"{{version}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nag.circularlabs.io/NAG.php?cep=Circular_GetBlockHeight_",
+					"protocol": "https",
+					"host": [
+						"nag",
+						"circularlabs",
+						"io"
+					],
+					"path": [
+						"NAG.php"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "Circular_GetBlockHeight_"
+						}
+					]
+				},
+				"description": "Retrieves the blockchain block height"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Analytics",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function padNumber(number) {",
+							"    return number < 10 ? '0' + number : number;",
+							"}",
+							"",
+							"function getFormattedTimestamp() {",
+							"    let date = new Date(); ",
+							"    let year = date.getUTCFullYear(); ",
+							"    let month = padNumber(date.getUTCMonth() + 1);  ",
+							"    let day = padNumber(date.getUTCDate()); ",
+							"    let hours = padNumber(date.getUTCHours()); ",
+							"    let minutes = padNumber(date.getUTCMinutes()); ",
+							"    let seconds = padNumber(date.getUTCSeconds()); ",
+							"",
+							"    return `${year}:${month}:${day}-${hours}:${minutes}:${seconds}`;",
+							"}",
+							"",
+							"let timestamp = getFormattedTimestamp();",
+							"pm.globals.set('timestampFormatted', timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Blockchain\": \"\",\n    \"Version\": \"{{version}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nag.circularlabs.io/NAG.php?cep=Circular_GetAnalytics_",
+					"protocol": "https",
+					"host": [
+						"nag",
+						"circularlabs",
+						"io"
+					],
+					"path": [
+						"NAG.php"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "Circular_GetAnalytics_"
+						}
+					]
+				},
+				"description": "Get analytics data from a blockchain"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Blockchains",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function padNumber(number) {",
+							"    return number < 10 ? '0' + number : number;",
+							"}",
+							"",
+							"function getFormattedTimestamp() {",
+							"    let date = new Date(); ",
+							"    let year = date.getUTCFullYear(); ",
+							"    let month = padNumber(date.getUTCMonth() + 1);  ",
+							"    let day = padNumber(date.getUTCDate()); ",
+							"    let hours = padNumber(date.getUTCHours()); ",
+							"    let minutes = padNumber(date.getUTCMinutes()); ",
+							"    let seconds = padNumber(date.getUTCSeconds()); ",
+							"",
+							"    return `${year}:${month}:${day}-${hours}:${minutes}:${seconds}`;",
+							"}",
+							"",
+							"let timestamp = getFormattedTimestamp();",
+							"pm.globals.set('timestampFormatted', timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nag.circularlabs.io/NAG.php?cep=Circular_GetBlockchains_",
+					"protocol": "https",
+					"host": [
+						"nag",
+						"circularlabs",
+						"io"
+					],
+					"path": [
+						"NAG.php"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "Circular_GetBlockchains_"
+						}
+					]
+				},
+				"description": "Get the list of blockchains"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pending Transaction",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function padNumber(number) {",
+							"    return number < 10 ? '0' + number : number;",
+							"}",
+							"",
+							"function getFormattedTimestamp() {",
+							"    let date = new Date(); ",
+							"    let year = date.getUTCFullYear(); ",
+							"    let month = padNumber(date.getUTCMonth() + 1);  ",
+							"    let day = padNumber(date.getUTCDate()); ",
+							"    let hours = padNumber(date.getUTCHours()); ",
+							"    let minutes = padNumber(date.getUTCMinutes()); ",
+							"    let seconds = padNumber(date.getUTCSeconds()); ",
+							"",
+							"    return `${year}:${month}:${day}-${hours}:${minutes}:${seconds}`;",
+							"}",
+							"",
+							"let timestamp = getFormattedTimestamp();",
+							"pm.globals.set('timestampFormatted', timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Blockchain\": \"\",\n    \"ID\" : \"\",\n    \"Version\": \"{{version}}\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nag.circularlabs.io/NAG.php?cep=Circular_GetPendingTransaction_",
+					"protocol": "https",
+					"host": [
+						"nag",
+						"circularlabs",
+						"io"
+					],
+					"path": [
+						"NAG.php"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "Circular_GetPendingTransaction_"
+						}
+					]
+				},
+				"description": "Get the list of blockchains"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transaction By ID",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function padNumber(number) {",
+							"    return number < 10 ? '0' + number : number;",
+							"}",
+							"",
+							"function getFormattedTimestamp() {",
+							"    let date = new Date(); ",
+							"    let year = date.getUTCFullYear(); ",
+							"    let month = padNumber(date.getUTCMonth() + 1);  ",
+							"    let day = padNumber(date.getUTCDate()); ",
+							"    let hours = padNumber(date.getUTCHours()); ",
+							"    let minutes = padNumber(date.getUTCMinutes()); ",
+							"    let seconds = padNumber(date.getUTCSeconds()); ",
+							"",
+							"    return `${year}:${month}:${day}-${hours}:${minutes}:${seconds}`;",
+							"}",
+							"",
+							"let timestamp = getFormattedTimestamp();",
+							"pm.globals.set('timestampFormatted', timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Blockchain\": \"\",\n    \"ID\": \"\",\n    \"Start\": \"\",\n    \"End\": \"\",\n    \"Version\": \"{{version}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nag.circularlabs.io/NAG.php?cep=Circular_GetTransactionbyID_",
+					"protocol": "https",
+					"host": [
+						"nag",
+						"circularlabs",
+						"io"
+					],
+					"path": [
+						"NAG.php"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "Circular_GetTransactionbyID_"
+						}
+					]
+				},
+				"description": "Searches a Transaction by its ID. The transaction will be searched initially between the pending transactions and then in the blockchain"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transaction By Node",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function padNumber(number) {",
+							"    return number < 10 ? '0' + number : number;",
+							"}",
+							"",
+							"function getFormattedTimestamp() {",
+							"    let date = new Date(); ",
+							"    let year = date.getUTCFullYear(); ",
+							"    let month = padNumber(date.getUTCMonth() + 1);  ",
+							"    let day = padNumber(date.getUTCDate()); ",
+							"    let hours = padNumber(date.getUTCHours()); ",
+							"    let minutes = padNumber(date.getUTCMinutes()); ",
+							"    let seconds = padNumber(date.getUTCSeconds()); ",
+							"",
+							"    return `${year}:${month}:${day}-${hours}:${minutes}:${seconds}`;",
+							"}",
+							"",
+							"let timestamp = getFormattedTimestamp();",
+							"pm.globals.set('timestampFormatted', timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Blockchain\": \"\",\n    \"NodeID\": \"\",\n    \"Start\": \"\",\n    \"End\": \"\",\n    \"Version\": \"{{version}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nag.circularlabs.io/NAG.php?cep=Circular_GetTransactionbyNode_",
+					"protocol": "https",
+					"host": [
+						"nag",
+						"circularlabs",
+						"io"
+					],
+					"path": [
+						"NAG.php"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "Circular_GetTransactionbyNode_"
+						}
+					]
+				},
+				"description": "Searches all transactions broadcasted by a specified node"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transaction By Address",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function padNumber(number) {",
+							"    return number < 10 ? '0' + number : number;",
+							"}",
+							"",
+							"function getFormattedTimestamp() {",
+							"    let date = new Date(); ",
+							"    let year = date.getUTCFullYear(); ",
+							"    let month = padNumber(date.getUTCMonth() + 1);  ",
+							"    let day = padNumber(date.getUTCDate()); ",
+							"    let hours = padNumber(date.getUTCHours()); ",
+							"    let minutes = padNumber(date.getUTCMinutes()); ",
+							"    let seconds = padNumber(date.getUTCSeconds()); ",
+							"",
+							"    return `${year}:${month}:${day}-${hours}:${minutes}:${seconds}`;",
+							"}",
+							"",
+							"let timestamp = getFormattedTimestamp();",
+							"pm.globals.set('timestampFormatted', timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Blockchain\": \"\",\n    \"Address\": \"\",\n    \"Start\": \"\",\n    \"End\": \"\",\n    \"Version\": \"{{version}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nag.circularlabs.io/NAG.php?cep=Circular_GetTransactionbyAddress_",
+					"protocol": "https",
+					"host": [
+						"nag",
+						"circularlabs",
+						"io"
+					],
+					"path": [
+						"NAG.php"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "Circular_GetTransactionbyAddress_"
+						}
+					]
+				},
+				"description": "Searches all transactions broadcasted or received by a specified address"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transaction By Date",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function padNumber(number) {",
+							"    return number < 10 ? '0' + number : number;",
+							"}",
+							"",
+							"function getFormattedTimestamp() {",
+							"    let date = new Date(); ",
+							"    let year = date.getUTCFullYear(); ",
+							"    let month = padNumber(date.getUTCMonth() + 1);  ",
+							"    let day = padNumber(date.getUTCDate()); ",
+							"    let hours = padNumber(date.getUTCHours()); ",
+							"    let minutes = padNumber(date.getUTCMinutes()); ",
+							"    let seconds = padNumber(date.getUTCSeconds()); ",
+							"",
+							"    return `${year}:${month}:${day}-${hours}:${minutes}:${seconds}`;",
+							"}",
+							"",
+							"let timestamp = getFormattedTimestamp();",
+							"pm.globals.set('timestampFormatted', timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Blockchain\": \"\",\n    \"Address\": \"\",\n    \"StartDate\": \"\",\n    \"EndDate\": \"\",\n    \"Version\": \"{{version}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nag.circularlabs.io/NAG.php?cep=Circular_GetTransactionbyDate_",
+					"protocol": "https",
+					"host": [
+						"nag",
+						"circularlabs",
+						"io"
+					],
+					"path": [
+						"NAG.php"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "Circular_GetTransactionbyDate_"
+						}
+					]
+				},
+				"description": "Searches all transactions broadcasted or received by a specified address in a specified timeframe.\n\nThe dates must be written in YYYY:MM:DD-HH:mm:ss format."
+			},
+			"response": []
+		},
+		{
+			"name": "Send Transaction",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function padNumber(number) {",
+							"    return number < 10 ? '0' + number : number;",
+							"}",
+							"",
+							"function getFormattedTimestamp() {",
+							"    let date = new Date(); ",
+							"    let year = date.getUTCFullYear(); ",
+							"    let month = padNumber(date.getUTCMonth() + 1);  ",
+							"    let day = padNumber(date.getUTCDate()); ",
+							"    let hours = padNumber(date.getUTCHours()); ",
+							"    let minutes = padNumber(date.getUTCMinutes()); ",
+							"    let seconds = padNumber(date.getUTCSeconds()); ",
+							"",
+							"    return `${year}:${month}:${day}-${hours}:${minutes}:${seconds}`;",
+							"}",
+							"",
+							"let timestamp = getFormattedTimestamp();",
+							"pm.globals.set('timestampFormatted', timestamp);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ID\": \"\",\n    \"From\": \"\",\n    \"To\": \"\",\n    \"Timestamp\": \"{{timestampFormatted}}\",\n    \"Payload\": \"\",\n    \"Nonce\": \"\",\n    \"Signature\": \"\",\n    \"Blockchain\": \"\",\n    \"Type\": \"\",\n    \"Version\": \"{{version}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://nag.circularlabs.io/NAG.php?cep=Circular_AddTransaction_",
+					"protocol": "https",
+					"host": [
+						"nag",
+						"circularlabs",
+						"io"
+					],
+					"path": [
+						"NAG.php"
+					],
+					"query": [
+						{
+							"key": "cep",
+							"value": "Circular_AddTransaction_"
+						}
+					]
+				},
+				"description": "Send a transaction to a blockchain.\n\nTypes of transaction:\n\n- **C_TYPE_COIN:** Transaction involving native coins (CIRX) without the use of Hyper Code (Smart Contracts).\n    \n- **C_TYPE_TOKEN:** Transaction involving specified tokens without the use of Hyper Code.\n    \n- **C_TYPE_ASSET:** Transaction involving a generic digital asset that is not represented by a token.\n    \n- **C_TYPE_CERTIFICATE:** Transaction where the payload doesn't require processing and is a generic string.\n    \n- **C_TYPE_REGISTERWALLET:** Transaction used to register a new wallet on a specified blockchain.\n    \n- **C_TYPE_HC_DEPLOYMENT:** Transaction to deploy a new Hyper Code Program.\n    \n- **C_TYPE_HC_REQUEST:** Transaction to call a specified endpoint of a Hyper Program.\n    \n- **C_TYPE_USERDEF:** Unspecified type, defined by the user (not available yet)."
+			},
+			"response": []
+		}
+	]
+}
