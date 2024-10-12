@@ -20,6 +20,10 @@ Before using the API requests, set up the body of the request with the preferred
 ### 5. Start Making Requests
 Once the environment is configured, you can start using the various API endpoints in the collection. Each request has pre-defined parameters that you can modify as needed.
 
+### API Docs
+
+Find the documentation on [GitBook](https://circular-protocol.gitbook.io/circular-sdk/api-docs/apis)
+
 ## 🌟 Key Features
 - **Modular Requests**: Easily interact with endpoints for block informations, assets, wallets, transactions, and more.
 - **Pre-built Environment**: Quickly configure API requests with minimal setup.
